@@ -1,4 +1,5 @@
 const Employee = require("../lib/Employee");
+// name, id, email, getName(), getId(), getEmail(), getRole()
 
 test("creates an employee object", () => {
 	const employee = new Employee("John", 2, "john@smith.com");
@@ -10,4 +11,26 @@ test("creates an employee object", () => {
 	expect(employee.email).toEqual("john@smith.com");
 });
 
-// name, id, email, getName(), getId(), getEmail(), getRole()
+test("tests the getName() method", () => {
+	const employee = new Employee("John", 2, "john@smith.com");
+
+	expect(employee.getName()).toBe("John");
+});
+
+test("tests the getId() method", () => {
+	const employee = new Employee("John", 2, "john@smith.com");
+
+	expect(employee.getId()).toBe(2);
+});
+
+test("tests the getEmail() method", () => {
+	const employee = new Employee("John", 2, "john@smith.com");
+
+	expect(employee.getEmail()).toBe("john@smith.com");
+});
+
+test("tests the getRole() method", () => {
+	const employee = new Employee("John", 2, "john@smith.com");
+
+	expect(employee.getRole()).toBe("Employee");
+});
