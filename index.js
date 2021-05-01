@@ -95,6 +95,71 @@ const engineerQuestions = [
 			}
 		},
 	},
+	{
+		type: "input",
+		name: "engineerGithub",
+		message: "Please enter the engineer's GitHub username.",
+		validate: (githubInput) => {
+			if (githubInput) return true;
+			else {
+				console.log("Please enter a valid username!");
+				return false;
+			}
+		},
+	},
+];
+
+// intern questions
+const internQuestions = [
+	{
+		type: "input",
+		name: "internName",
+		message: "Please enter the intern's name.",
+		validate: (nameInput) => {
+			if (nameInput) return true;
+			else {
+				console.log("You must enter a name!");
+				return false;
+			}
+		},
+	},
+	{
+		type: "input",
+		name: "internID",
+		message: "Please enter the intern's ID",
+		validate: (idInput) => {
+			if (!idInput) {
+				console.log("You must enter an ID!");
+				return false;
+			} else if (!parseInt(idInput)) {
+				console.log("Please enter a numerical ID!");
+				return false;
+			} else return true;
+		},
+	},
+	{
+		type: "input",
+		name: "internEmail",
+		message: "Please enter the intern's email address.",
+		validate: (emailInput) => {
+			if (emailInput) return true;
+			else {
+				console.log("You must enter an email!");
+				return false;
+			}
+		},
+	},
+	{
+		type: "input",
+		name: "internSchool",
+		message: "Please enter the school the intern attends.",
+		validate: (schoolInput) => {
+			if (!schoolInput) {
+				console.log("You must enter a school!");
+				return false;
+			} else return true;
+		},
+	},
 ];
 
 const promptUser = (questions) => {
