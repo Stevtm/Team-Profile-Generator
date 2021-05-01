@@ -1,8 +1,8 @@
 const inquirer = require("inquirer");
 
-// array of questions for use input
+// arrays of questions for prompts
+// manager questions
 const managerQuestions = [
-	// manager questions
 	{
 		type: "input",
 		name: "managerName",
@@ -55,8 +55,50 @@ const managerQuestions = [
 	},
 ];
 
+// engineer questions
+const engineerQuestions = [
+	{
+		type: "input",
+		name: "engineerName",
+		message: "Please enter the engineer's name.",
+		validate: (nameInput) => {
+			if (nameInput) return true;
+			else {
+				console.log("You must enter a name!");
+				return false;
+			}
+		},
+	},
+	{
+		type: "input",
+		name: "engineerID",
+		message: "Please enter the engineer's ID.",
+		validate: (idInput) => {
+			if (!idInput) {
+				console.log("You must enter an ID!");
+				return false;
+			} else if (!parseInt(idInput)) {
+				console.log("Please enter a numerical ID!");
+				return false;
+			} else return true;
+		},
+	},
+	{
+		type: "input",
+		name: "engineerEmail",
+		message: "Please enter the engineer's email address.",
+		validate: (emailInput) => {
+			if (emailInput) return true;
+			else {
+				console.log("You must enter an email!");
+				return false;
+			}
+		},
+	},
+];
+
 const promptUser = (questions) => {
 	return inquirer.prompt(questions);
 };
 
-promptUser(managerQuestions).then((res) => console.log(res));
+promptUser(engineerQuestions).then((res) => console.log(res));
