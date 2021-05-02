@@ -113,12 +113,22 @@ const promptIntern = () => {
 		.then(promptAddEmployeeQuestion);
 };
 
-// promptManager()
-// 	.then(promptAddEmployeeQuestion)
-// 	.then((personnel) => {
-// 		return generatePage(personnel);
-// 	})
-// 	.then((page) => writeFile(page));
+promptManager()
+	.then(promptAddEmployeeQuestion)
+	.then((personnel) => {
+		return generatePage(personnel);
+	})
+	.then((page) => writeFile(page))
+	.then((writeFileResponse) => {
+		console.log(writeFileResponse);
+		return copyFile();
+	})
+	.then((copyFileReponse) => {
+		console.log(copyFileReponse);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 
 // create template data for site generation testing
 const templateData = {
@@ -134,5 +144,5 @@ const templateData = {
 	],
 };
 
-const sample = generatePage(templateData);
-writeFile(sample);
+// const sample = generatePage(templateData);
+// writeFile(sample);
