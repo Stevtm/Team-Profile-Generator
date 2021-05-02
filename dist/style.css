@@ -1,0 +1,31 @@
+header {
+	/* box model */
+	align-items: center;
+	display: flex;
+	height: 200px;
+	justify-content: center;
+	width: 100%;
+}
+
+main {
+	/* box model */
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+section {
+	/* box model */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 80%;
+}
+
+.card {
+	/* box model */
+	margin: 10px 10px;
+	padding: 0;
+	width: 300px;
+}

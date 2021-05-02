@@ -7,7 +7,7 @@ const {
 	internQuestions,
 } = require("./utils/prompt-data");
 const generatePage = require("./src/page-template");
-const writeFile = require("./utils/generate-site");
+const { writeFile, copyFile } = require("./utils/generate-site");
 
 // import classes
 const Manager = require("./lib/Manager");

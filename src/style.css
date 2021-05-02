@@ -1,0 +1,9 @@
+header {
+	/* box model */
+	height: 200px;
+	width: 100%;
+
+	/* visual decorations */
+	background-color: navy;
+	color: white;
+}
