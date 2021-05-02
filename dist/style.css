@@ -12,6 +12,7 @@ main {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	margin: 50px 0;
 }
 
 section {
@@ -28,4 +29,8 @@ section {
 	margin: 10px 10px;
 	padding: 0;
 	width: 300px;
+}
+
+a {
+	text-decoration: none;
 }
