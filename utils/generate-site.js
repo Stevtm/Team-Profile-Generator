@@ -1,5 +1,6 @@
 const fs = require("fs");
 
+// function to generate an HTML file to the dist folder, given the file contents (generated from src/page-template.js)
 const writeFile = (fileContent) => {
 	return new Promise((resolve, reject) => {
 		fs.writeFile("./dist/index.html", fileContent, (err) => {
@@ -18,6 +19,7 @@ const writeFile = (fileContent) => {
 	});
 };
 
+// function to copy the CSS file from /src to /dist
 const copyFile = () => {
 	return new Promise((resolve, reject) => {
 		fs.copyFile("./src/style.css", "./dist/style.css", (err) => {

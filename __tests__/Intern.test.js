@@ -1,5 +1,4 @@
 const Intern = require("../lib/Intern");
-
 // inherits from intern, school, getSchool(), getRole()
 
 test("creates an intern object", () => {

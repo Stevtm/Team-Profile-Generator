@@ -1,5 +1,4 @@
 const Engineer = require("../lib/Engineer");
-
 // inherit from Employee, github, getGithub(), getRole()
 
 test("creates an engineer object", () => {

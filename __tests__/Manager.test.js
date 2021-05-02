@@ -1,5 +1,4 @@
 const Manager = require("../lib/Manager");
-
 // extends Employee, officeNumber, getRole()
 
 test("creates a manager object", () => {

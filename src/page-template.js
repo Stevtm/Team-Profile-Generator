@@ -1,4 +1,4 @@
-// create function to populate github link
+// function to populate github link based on username
 const getGithubLink = (engineer) => {
 	return `https://github.com/${engineer.getGithub()}`;
 };
@@ -72,7 +72,7 @@ const generateIntern = (personnel) => {
 		.join("");
 };
 
-// generate the page
+// generate the HTML file and add the cards for each employee
 module.exports = (personnel) => {
 	return `
     <!DOCTYPE html>
