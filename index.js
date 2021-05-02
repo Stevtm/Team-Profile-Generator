@@ -113,9 +113,26 @@ const promptIntern = () => {
 		.then(promptAddEmployeeQuestion);
 };
 
-promptManager()
-	.then(promptAddEmployeeQuestion)
-	.then((personnel) => {
-		return generatePage(personnel);
-	})
-	.then((page) => writeFile(page));
+// promptManager()
+// 	.then(promptAddEmployeeQuestion)
+// 	.then((personnel) => {
+// 		return generatePage(personnel);
+// 	})
+// 	.then((page) => writeFile(page));
+
+// create template data for site generation testing
+const templateData = {
+	manager: [new Manager("Boss", 1, "manager@email.com", 1)],
+	engineers: [
+		new Engineer("Billy", 2, "billy@email.com", "billyhub"),
+		new Engineer("Tommy", 3, "tommy@email.com", "tommyhub"),
+		new Engineer("Lucy", 4, "lucy@email.com", "lucyhub"),
+	],
+	interns: [
+		new Intern("Timmy", 5, "timmy@email.com", "MIT"),
+		new Intern("Lizzy", 6, "lizzy@email.com", "Harvard"),
+	],
+};
+
+const sample = generatePage(templateData);
+writeFile(sample);
