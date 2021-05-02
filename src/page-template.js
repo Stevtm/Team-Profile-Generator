@@ -12,6 +12,40 @@ const generateManager = (personnel) => {
     </article>`;
 };
 
+// create the engineer cards
+const generateEngineer = (personnel) => {
+	// generate a card for each of the engineers in the array
+	return personnel.engineers
+		.map((engineer) => {
+			return `
+            <article>
+                <h2>${engineer.getRole()}</h2>
+                <h3>${engineer.getName()}</h3>
+                <p>${engineer.getId()}</p>
+                <p>${engineer.getEmail()}</p>
+                <p>${engineer.getGithub()}</p>
+            </article>`;
+		})
+		.join("");
+};
+
+// create the intern cards
+const generateIntern = (personnel) => {
+	// geneate a card for each of the interns in the array
+	return personnel.interns
+		.map((intern) => {
+			return `
+        <article>
+            <h2>${intern.getRole()}</h2>
+            <h3>${intern.getName()}</h3>
+            <p>${intern.getId()}</p>
+            <p>${intern.getEmail()}</p>
+            <p>${intern.getSchool()}</p>
+        </article>`;
+		})
+		.join("");
+};
+
 // generate the page
 module.exports = (personnel) => {
 	return `
@@ -25,6 +59,8 @@ module.exports = (personnel) => {
         </head>
         <body>
             ${generateManager(personnel)}
+            ${generateEngineer(personnel)}
+            ${generateIntern(personnel)}
         </body>
     </html>
     `;
