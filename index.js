@@ -1,11 +1,20 @@
 const inquirer = require("inquirer");
+
+// import methods
 const {
 	managerQuestions,
 	engineerQuestions,
 	internQuestions,
 } = require("./utils/prompt-data");
+const generatePage = require("./src/page-template");
+const writeFile = require("./utils/generate-site");
 
-// create an object to hold all personnel information
+// import classes
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+
+// create an array to hold all personnel information
 const personnel = {
 	manager: [],
 	engineers: [],
@@ -39,22 +48,46 @@ const promptAddEmployeeQuestion = () => {
 };
 
 const promptManager = () => {
+	console.log(`
+	=============
+	Add a Manager
+	=============`);
+
 	// prompt the user to answer the manager questions
 	return inquirer.prompt(managerQuestions).then((managerData) => {
-		personnel.manager.push(managerData);
+		const { managerName, managerID, managerEmail, managerOffice } = managerData;
+		const manager = new Manager(
+			managerName,
+			managerID,
+			managerEmail,
+			managerOffice
+		);
+		personnel.manager.push(manager);
 	});
 };
 
 const promptEngineer = () => {
 	console.log(`
-	=================
+	==================
 	Add a New Engineer
-	=================`);
+	==================`);
 
 	return inquirer
 		.prompt(engineerQuestions)
 		.then((engineerData) => {
-			personnel.engineers.push(engineerData);
+			const {
+				engineerName,
+				engineerID,
+				engineerEmail,
+				engineerGithub,
+			} = engineerData;
+			const engineer = new Engineer(
+				engineerName,
+				engineerID,
+				engineerEmail,
+				engineerGithub
+			);
+			personnel.engineers.push(engineer);
 		})
 		.then(promptAddEmployeeQuestion);
 };
@@ -68,7 +101,14 @@ const promptIntern = () => {
 	return inquirer
 		.prompt(internQuestions)
 		.then((internData) => {
-			personnel.interns.push(internData);
+			const { internName, internID, internEmail, internSchool } = internData;
+			const intern = new Intern(
+				internName,
+				internID,
+				internEmail,
+				internSchool
+			);
+			personnel.interns.push(intern);
 		})
 		.then(promptAddEmployeeQuestion);
 };
@@ -76,5 +116,6 @@ const promptIntern = () => {
 promptManager()
 	.then(promptAddEmployeeQuestion)
 	.then((personnel) => {
-		console.log(personnel);
-	});
+		return generatePage(personnel);
+	})
+	.then((page) => writeFile(page));
